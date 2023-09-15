@@ -29,7 +29,9 @@ export template<typename T>
 std::string join_with_separator(T beg_it, T end_it, std::string separator)
 {
 	std::ostringstream outstr;
-	if(beg_it != end_it) outstr << *beg_it++;
-	while(beg_it != end_it) outstr << separator.c_str() << *beg_it++;
+	if(beg_it != end_it)
+		outstr << *beg_it++;
+	while(beg_it != end_it)
+		outstr << separator.c_str() << *beg_it++;
 	return outstr.str();
 }
