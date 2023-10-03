@@ -54,7 +54,18 @@ TEST_F(ModulesTest, FormatCompare)
 	EXPECT_STREQ(MySettingTestList.GetDefaultValue().c_str(), *(test_list.begin()));
 	EXPECT_STREQ(
 		std::format("{}", MySettingTestList).c_str(),
-		join_with_separator(MySettingTestList.GetAllValues().begin(), MySettingTestList.GetAllValues().end(), MySettingTestList.PrintSeparator).c_str()
+		join_with_sep(MySettingTestList.GetAllValues().begin(), MySettingTestList.GetAllValues().end(), MySettingTestList.PrintSeparator).c_str()
+	);
+	EXPECT_STREQ(
+		join_with_sep(MySettingTestList.GetAllValues().begin(), MySettingTestList.GetAllValues().end(), MySettingTestList.PrintSeparator).c_str(),
+		join_wrap_with_sep(MySettingTestList.GetAllValues().begin(), MySettingTestList.GetAllValues().end(), MySettingTestList.PrintSeparator, "").c_str()
+	);
+
+	std::vector<std::string> test_content{"El1", "El2", "El3"};
+	std::string test_outstr{"'El1','El2','El3'"};
+	EXPECT_STREQ(
+		test_outstr.c_str(),
+		join_wrap_with_sep(test_content.begin(), test_content.end(), ",", "'").c_str()
 	);
 }
 
@@ -63,7 +74,8 @@ auto main (int argc, char** argv) -> int
 	Setting MySettingList({"One", "Two", "Three"}, 8U);
 	MySettingList.AddValue("Four");
 
-	cout << "Elements: " << join_with_separator(MySettingList.GetAllValues().begin(), MySettingList.GetAllValues().end(), ", ") << endl;
+	cout << "Elements: " << join_with_sep(MySettingList.GetAllValues().begin(), MySettingList.GetAllValues().end(), ", ") << endl;
+	cout << "Elements: " << join_wrap_with_sep(MySettingList.GetAllValues().begin(), MySettingList.GetAllValues().end(), ", ", ",") << endl;
 
 	if (MySettingList.Contains("Four"))
 		cout << "Setting Contains El" << endl;
