@@ -75,7 +75,7 @@ auto main (int argc, char** argv) -> int
 	MySettingList.AddValue("Four");
 
 	cout << "Elements: " << join_with_sep(MySettingList.GetAllValues().begin(), MySettingList.GetAllValues().end(), ", ") << endl;
-	cout << "Elements: " << join_wrap_with_sep(MySettingList.GetAllValues().begin(), MySettingList.GetAllValues().end(), ", ", ",") << endl;
+	cout << "Elements: " << join_wrap_with_sep(MySettingList.GetAllValues().begin(), MySettingList.GetAllValues().end(), ", ", "'") << endl;
 
 	if (MySettingList.Contains("Four"))
 		cout << "Setting Contains El" << endl;
