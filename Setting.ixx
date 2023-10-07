@@ -1,6 +1,7 @@
 module;
 
 #include <string>
+#include <string_view>
 #include <vector>
 #include <concepts>
 #include <format>
@@ -79,7 +80,7 @@ class Setting {
 };
 
 template <>
-struct std::formatter<Setting<>> : std::formatter<string_view>
+struct std::formatter<Setting<>> : std::formatter<std::string_view>
 {
 	auto format(const Setting<>& setting, std::format_context& ctx)
 	{
@@ -95,6 +96,6 @@ struct std::formatter<Setting<>> : std::formatter<string_view>
 				str.resize(str.length() - separ.length());
 		}
 
-		return std::formatter<string_view>::format(str, ctx);
+		return std::formatter<std::string_view>::format(str, ctx);
 	}
 };
