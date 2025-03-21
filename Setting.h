@@ -1,12 +1,8 @@
-module;
-
 #include <string>
 #include <string_view>
 #include <vector>
 #include <concepts>
 #include <format>
-
-export module Setting;
 
 template <typename T>
 concept IntegerType = std::integral<T> && !std::signed_integral<T>;
@@ -14,7 +10,7 @@ concept IntegerType = std::integral<T> && !std::signed_integral<T>;
 template <typename T>
 concept ConvertsToString = std::constructible_from<std::string, T>;
 
-export template <typename T = std::string, class V = std::vector<T>>
+template <typename T = std::string, class V = std::vector<T>>
 class Setting {
 
 	public:

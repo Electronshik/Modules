@@ -3,8 +3,8 @@
 
 #include <gtest/gtest.h>
 
-import Setting;
-import Utils;
+#include "Setting.h"
+#include "Utils.h"
 
 using std::cout, std::endl, std::format;
 using std::string;

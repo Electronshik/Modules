@@ -1,14 +1,10 @@
-module;
-
 #include <format>
 #include <string>
 #include <sstream>
 #include <string_view>
 #include <cstdio>
 
-export module Utils;
-
-export template<typename... Args>
+template<typename... Args>
 void print(const std::string_view fmt_str, Args&&... args)
 {
 	auto fmt_args{ std::make_format_args(args...) };
@@ -16,7 +12,7 @@ void print(const std::string_view fmt_str, Args&&... args)
 	std::fputs(outstr.c_str(), stdout);
 }
 
-export template<typename... Args>
+template<typename... Args>
 void print_nl(const std::string_view fmt_str, Args&&... args)
 {
 	auto fmt_args{ std::make_format_args(args...) };
@@ -25,7 +21,7 @@ void print_nl(const std::string_view fmt_str, Args&&... args)
 	std::fputs(outstr.c_str(), stdout);
 }
 
-export template<typename T>
+template<typename T>
 std::string join_with_sep(T beg_it, T end_it, std::string separator)
 {
 	std::ostringstream outstr;
@@ -39,7 +35,7 @@ std::string join_with_sep(T beg_it, T end_it, std::string separator)
 	return outstr.str();
 }
 
-export template<typename T>
+template<typename T>
 std::string join_wrap_with_sep(T beg_it, T end_it, std::string separator, std::string wrapper)
 {
 	std::ostringstream outstr;
